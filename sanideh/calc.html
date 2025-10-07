@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>ساده کردن کسر</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        input[type="number"] {
+            width: 60px;
+            padding: 5px;
+            margin: 10px 5px;
+            font-size: 1.2em;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 1.4em;
+            color: #333;
+        }
+        .fraction {
+            display: inline-block;
+            text-align: center;
+        }
+        .fraction span {
+            display: block;
+        }
+        .fraction .numerator {
+            border-bottom: 1px solid #333;
+        }
+        .fraction .denominator {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>ساده کردن کسر</h2>
+        <form id="fractionForm">
+            <div>
+                <label for="numerator">صورت:</label>
+                <input type="number" id="numerator" required>
+            </div>
+            <div>
+                <label for="denominator">مخرج:</label>
+                <input type="number" id="denominator" required>
+            </div>
+            <button type="submit">ساده کن</button>
+        </form>
+        <div class="result" id="result"></div>
+        <button id="copyButton" style="display: none;">کپی کردن نتیجه</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
+    <script>
+        function gcd(a, b) {
+            if (!b) {
+                return a;
+            }
+            return gcd(b, a % b);
+        }
+
+        function simplifyFraction(numerator, denominator) {
+            const gcdValue = gcd(numerator, denominator);
+            const simplifiedNumerator = numerator / gcdValue;
+            const simplifiedDenominator = denominator / gcdValue;
+            return {numerator: simplifiedNumerator, denominator: simplifiedDenominator};
+        }
+
+        document.getElementById('fractionForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const numerator = parseInt(document.getElementById('numerator').value);
+            const denominator = parseInt(document.getElementById('denominator').value);
+            if (denominator === 0) {
+                document.getElementById('result').textContent = 'مخرج نمی‌تواند صفر باشد';
+                document.getElementById('copyButton').style.display = 'none';
+            } else {
+                const simplifiedFraction = simplifyFraction(numerator, denominator);
+                document.getElementById('result').innerHTML = `
+                    <div class="fraction">
+                        <span class="numerator">${simplifiedFraction.numerator}</span>
+                        <span class="denominator">${simplifiedFraction.denominator}</span>
+                    </div>
+                `;
+                document.getElementById('copyButton').style.display = 'inline-block';
+                document.getElementById('copyButton').setAttribute('data-clipboard-text', `${simplifiedFraction.numerator}/${simplifiedFraction.denominator}`);
+            }
+        });
+
+        new ClipboardJS('#copyButton');
+    </script>
+</body>
+</html>

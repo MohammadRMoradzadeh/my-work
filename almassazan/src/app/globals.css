@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Pinar-Bold";
+    src: url(./../../public/fonts/Pinar-FD-Bold.woff2);
+  }
+  @font-face {
+    font-family: "Pinar-Black";
+    src: url(./../../public/fonts/Pinar-FD-Black.woff2);
+  }
+  @font-face {
+    font-family: "Pinar-ExtraBold";
+    src: url(./../../public/fonts/Pinar-FD-ExtraBold.woff2);
+  }
+  @font-face {
+    font-family: "Pinar-Light";
+    src: url(./../../public/fonts/Pinar-FD-Light.woff2);
+  }
+  @font-face {
+    font-family: "Pinar-Medium";
+    src: url(./../../public/fonts/Pinar-FD-Medium.woff2);
+  }
+  @font-face {
+    font-family: "Pinar-Regular";
+    src: url(./../../public/fonts/Pinar-FD-Regular.woff2);
+  }
+  @font-face {
+    font-family: "Pinar-SemiBold";
+    src: url(./../../public/fonts/Pinar-FD-SemiBold.woff2);
+  }
+  @font-face {
+    font-family: "Roboto-Black";
+    src: url(./../../public/fonts/Roboto-Black.ttf);
+  }
+  @font-face {
+    font-family: "Roboto-Bold";
+    src: url(./../../public/fonts/Roboto-Bold.ttf);
+  }
+  @font-face {
+    font-family: "Roboto-Light";
+    src: url(./../../public/fonts/Roboto-Light.ttf);
+  }
+  @font-face {
+    font-family: "Roboto-Medium";
+    src: url(./../../public/fonts/Roboto-Medium.ttf);
+  }
+  @font-face {
+    font-family: "Roboto-Regular";
+    src: url(./../../public/fonts/Roboto-Regular.ttf);
+  }
+  @font-face {
+    font-family: "Roboto-Thin";
+    src: url(./../../public/fonts/Roboto-Thin.ttf);
+  }
+
+  .tittle {
+    -webkit-text-stroke: 1px #fff;
+  }
+  .tittle1 {
+    -webkit-text-stroke: 0px #fff0;
+  }
+
+  .tittle2 {
+    -webkit-text-stroke: 2.2px #fca311;
+  }
+  .tittle3 {
+    -webkit-text-stroke: 3px #fca311;
+  }
+
+  @keyframes heightAnimation {
+    0% {
+      aspect-ratio: 140/0;
+    }
+    10% {
+      aspect-ratio: 140/12;
+    }
+    100% {
+      aspect-ratio: 140/121;
+    }
+  }
+
+  .animation-height {
+    animation: heightAnimation 0.2s ease-out forwards;
+  }
+  .my-confirm-button {
+    background-color: #14213d;
+  }
+  @keyframes spinner-d55elj {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+  .spinner {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    padding: 1.1px;
+    background: conic-gradient(#0000 10%, #cfcfe6) content-box;
+    -webkit-mask: repeating-conic-gradient(
+        #0000 0deg,
+        #000 1deg 20deg,
+        #0000 21deg 36deg
+      ),
+      radial-gradient(
+        farthest-side,
+        #0000 calc(100% - 9px),
+        #000 calc(100% - 9px)
+      );
+    -webkit-mask-composite: destination-in;
+    mask-composite: intersect;
+    animation: spinner-d55elj 0.8s infinite steps(10);
+  }
+}

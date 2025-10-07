@@ -1,0 +1,29 @@
+{
+  "name": "almas-sazan",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev ",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "autoprefixer": "10.4.19",
+    "aws-sdk": "^2.1691.0",
+    "axios": "^1.7.7",
+    "bcryptjs": "^2.4.3",
+    "iconsax-react": "^0.0.8",
+    "jalaali-js": "^1.2.7",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.3.4",
+    "next": "14.2.3",
+    "node-cron": "^3.0.3",
+    "postcss": "8.4.38",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-hot-toast": "^2.4.1",
+    "sweetalert2": "^11.13.2",
+    "tailwindcss": "3.4.3"
+  }
+}

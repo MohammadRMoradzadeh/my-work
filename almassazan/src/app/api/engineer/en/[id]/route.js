@@ -1,0 +1,45 @@
+import connectToDB from "@/configs/db";
+
+import EngineerModel from "@/models/Engineer";
+export async function GET(req, { params }) {
+  const id = params.id;
+  try {
+    connectToDB();
+    const engineer = await EngineerModel.findOne(
+      { _id: id },
+      "-fa_fullName -fa_role -fa_evidence -fa_workRecords  -__v"
+    );
+    return Response.json(
+      {
+        message: ["ok"],
+        data: {
+          _id: engineer._id,
+          fullName: engineer.en_fullName,
+          role: engineer.en_role,
+          evidence: engineer.en_evidence,
+          workRecords: engineer.en_workRecords,
+          email: engineer.email,
+          image: engineer.image,
+        },
+      },
+      {
+        status: 200,
+      }
+    );
+  } catch (err) {
+    console.log(
+      `engineer / en / [id] (GET) : The request encountered a server error ==>${err.message}`
+    );
+    return Response.json(
+      {
+        message: [
+          `engineer / en / [id] (GET) : The request encountered a server error ==>${err.message}`,
+        ],
+        data: null,
+      },
+      {
+        status: 500,
+      }
+    );
+  }
+}
